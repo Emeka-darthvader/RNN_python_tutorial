@@ -15,7 +15,8 @@ x_test = x_test/255.0
 model = Sequential()
 
 model.add(LSTM(128,input_shape=(x_train.shape[1:]),activation='relu',return_sequences=True)) #relu here is rectified linear, for dense layer it wont undersatnd return sequences
-#model.add(CuDNNLSTM(128,input_shape=(x_train.shape[1:]),activation='relu',return_sequences=True)) #relu here is rectified linear, for dense layer it wont undersatnd return sequences
+#model.add(CuDNNLSTM(128,input_shape=(x_train.shape[1:]),return_sequences=True)) #relu here is rectified linear, for dense layer it wont undersatnd return sequences
+#when using CuDNNLSTM do not use activation functionas tanh is the default and is required.
 model.add(Dropout(0.2)) #what does Dropout do here though?
 
 model.add(LSTM(128,activation='relu'))
